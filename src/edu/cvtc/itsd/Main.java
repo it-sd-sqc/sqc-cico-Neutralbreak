@@ -42,7 +42,8 @@ public class Main {
         throws BadLocationException
     {
       if (fb.getDocument() != null) {
-        super.insertString(fb, offset, stringToAdd, attr);
+        //super.insertString(fb, offset, stringToAdd, attr);
+        super.insertString(fb, offset, stringToAdd.replaceAll("[^0-9]",""), attr);
       }
       else {
         Toolkit.getDefaultToolkit().beep();
@@ -54,7 +55,8 @@ public class Main {
         throws BadLocationException
     {
       if (fb.getDocument() != null) {
-        super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+        //super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+        super.replace(fb, offset, lengthToDelete, stringToAdd.replaceAll("[^0-9]",""), attr);
       }
       else {
         Toolkit.getDefaultToolkit().beep();

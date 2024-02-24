@@ -68,3 +68,13 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 
 ## Expected results
 * Should ignore non-numerical input.
+
+# Module 5  User control and freedom.
+## Test steps
+1. Build and run CiCo.
+2. Enter 00000000 into the field and click update.
+3. Press button "Finish" button
+
+## Expected results
+* Pressing "Finish" button should close the current check in/out process
+and bring back the main panel

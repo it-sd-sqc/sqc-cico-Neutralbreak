@@ -42,8 +42,7 @@ public class Main {
         throws BadLocationException
     {
       if (fb.getDocument() != null) {
-        //super.insertString(fb, offset, stringToAdd, attr);
-        super.insertString(fb, offset, stringToAdd.replaceAll("[^0-9]",""), attr);
+        super.insertString(fb, offset, stringToAdd, attr);
       }
       else {
         Toolkit.getDefaultToolkit().beep();
@@ -55,10 +54,13 @@ public class Main {
         throws BadLocationException
     {
       if (fb.getDocument() != null) {
-        //super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
-        super.replace(fb, offset, lengthToDelete, stringToAdd.replaceAll("[^0-9]",""), attr);
-      }
-      else {
+        if ((fb.getDocument().getLength() + stringToAdd.length()) == MAX_LENGTH && stringToAdd.matches("^[0-9]+$")) {
+          super.insertString(fb, offset, stringToAdd, attr);
+          Main.processCard();
+        } else if ((fb.getDocument().getLength() + stringToAdd.length()) <= MAX_LENGTH) {
+          super.replace(fb, offset, lengthToDelete, stringToAdd.replaceAll("\\D", ""), attr);
+        }
+      } else {
         Toolkit.getDefaultToolkit().beep();
       }
     }
@@ -261,12 +263,6 @@ public class Main {
     fieldNumber.setBackground(Color.green);
     fieldNumber.setForeground(Color.magenta);
     panelMain.add(fieldNumber);
-
-    JButton updateButton = new JButton("Update");
-    updateButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-    updateButton.addActionListener(new Update());
-    updateButton.setForeground(Color.green);
-    panelMain.add(updateButton);
 
     panelMain.add(Box.createVerticalGlue());
 

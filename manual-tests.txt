@@ -78,3 +78,12 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Pressing "Finish" button should close the current check in/out process
 and bring back the main panel
+
+# Module 6
+## Test steps
+1. Build and run CiCo.
+2. Enter 00000000 into the text field.
+
+## Expected results
+* The status panel should appear with the name "DEVELOPER" after entering the eighth digit. The 'update' button should
+not appear on-screen.
